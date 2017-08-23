@@ -18,6 +18,9 @@ platforms:
   driver:
     image: dokken/amazonlinux
     pid_one_command: /sbin/init
+    intermediate_instructions:
+      - RUN echo /etc/resolv.conf
+      - RUN echo 'nameserver 8.8.8.8' > /etc/resolv.conf
 
 - name: debian-7
   driver:
@@ -43,13 +46,11 @@ platforms:
 - name: centos-6
   driver:
     image: dokken/centos-6
-    platform: rhel
     pid_one_command: /sbin/init
 
 - name: centos-7
   driver:
     image: dokken/centos-7
-    platform: rhel
     pid_one_command: /usr/lib/systemd/systemd
 
 - name: fedora-latest
